@@ -1,0 +1,127 @@
+=== Clean Output ===
+> /Users/raychen/Applications/DevEco-Studio.app/contents/tools/node/bin/node /Users/raychen/Applications/DevEco-Studio.app/contents/tools/hvigor/bin/hvigorw.js clean --no-daemon
+
+> hvigor Finished :entry:clean... after 8 ms 
+> hvigor Finished ::clean... after 1 ms 
+> hvigor BUILD SUCCESSFUL in 481 ms 
+
+
+Process finished with exit code 0
+
+=== Build Output ===
+> /Users/raychen/Applications/DevEco-Studio.app/contents/tools/node/bin/node /Users/raychen/Applications/DevEco-Studio.app/contents/tools/hvigor/bin/hvigorw.js --mode project -p product=default assembleApp -p buildMode=debug --daemon
+
+> hvigor Finished ::PreBuildApp... after 1 ms 
+> hvigor Finished :entry:default@PreBuild... after 4 ms 
+> hvigor Finished ::DuplicateDependencyCheck... after 1 ms 
+> hvigor Finished :entry:default@CreateModuleInfo... after 1 ms 
+> hvigor Finished :entry:default@GenerateMetadata... after 1 ms 
+> hvigor Finished :entry:default@ConfigureCmake... after 1 ms 
+> hvigor Finished :entry:default@MergeProfile... after 1 ms 
+> hvigor Finished :entry:default@CreateBuildProfile... after 1 ms 
+> hvigor Finished :entry:default@PreCheckSyscap... after 1 ms 
+> hvigor Finished :entry:default@GeneratePkgContextInfo... after 1 ms 
+> hvigor Finished :entry:default@GeneratePkgSdkInfo... after 1 ms 
+> hvigor Finished :entry:default@ProcessIntegratedHsp... after 1 ms 
+> hvigor Finished :entry:default@BuildNativeWithCmake... after 1 ms 
+> hvigor Finished :entry:default@MakePackInfo... after 1 ms 
+> hvigor Finished :entry:default@SyscapTransform... after 1 ms 
+> hvigor Finished :entry:default@ProcessProfile... after 45 ms 
+> hvigor Finished :entry:default@ProcessRouterMap... after 1 ms 
+> hvigor Finished :entry:default@ProcessShareConfig... after 1 ms 
+> hvigor Finished :entry:default@ProcessStartupConfig... after 1 ms 
+> hvigor Finished :entry:default@BuildNativeWithNinja... after 1 ms 
+> hvigor Finished :entry:default@ProcessResource... after 1 ms 
+> hvigor Finished :entry:default@GenerateLoaderJson... after 1 ms 
+> hvigor Finished :entry:default@ProcessLibs... after 1 ms 
+> hvigor Finished :entry:default@CompileResource... after 111 ms 
+> hvigor Finished :entry:default@DoNativeStrip... after 1 ms 
+> hvigor Finished :entry:default@BuildJS... after 1 ms 
+> hvigor Finished :entry:default@CacheNativeLibs... after 4 ms 
+> hvigor ERROR: Failed :entry:default@CompileArkTS... 
+> hvigor WARN: 
+1 WARN: ArkTS:WARN: For details about ArkTS syntax errors, see FAQs
+2 WARN: ArkTS:WARN File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/manager/DistributedManager.ets:79:23
+ Function may throw exceptions. Special handling is required.
+
+3 WARN: ArkTS:WARN File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/manager/DistributedManager.ets:87:23
+ Function may throw exceptions. Special handling is required.
+
+4 WARN: ArkTS:WARN File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/manager/DistributedManager.ets:94:23
+ Function may throw exceptions. Special handling is required.
+
+5 WARN: ArkTS:WARN File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/manager/DistributedManager.ets:114:23
+ Function may throw exceptions. Special handling is required.
+
+6 WARN: ArkTS:WARN File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/manager/DistributedManager.ets:121:23
+ Function may throw exceptions. Special handling is required.
+
+> hvigor ERROR: ArkTS Compiler Error
+1 ERROR: 10605008 ArkTS Compiler Error
+Error Message: Use explicit types instead of "any", "unknown" (arkts-no-any-unknown) At File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/pages/TaskDetailPage.ets:20:9
+
+
+2 ERROR: 10605008 ArkTS Compiler Error
+Error Message: Use explicit types instead of "any", "unknown" (arkts-no-any-unknown) At File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/pages/TaskDetailPage.ets:22:11
+
+
+3 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Module '"../common/Constants"' has no exported member 'Constants'. At File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/common/Logger.ets:2:10
+
+
+4 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Conversion of type 'DataObject' to type 'Record<string, Object>' may be a mistake because neither type sufficiently overlaps with the other. If this was intentional, convert the expression to 'unknown' first.
+  Index signature for type 'string' is missing in type 'DataObject'. At File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/manager/DistributedManager.ets:102:22
+
+
+5 ERROR: 10505001 ArkTS Compiler Error
+Error Message: No overload matches this call.
+  The last overload gave the following error.
+    Argument of type '"deviceStateChange"' is not assignable to parameter of type '"serviceDie"'. At File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/manager/DistributedManager.ets:136:29
+
+
+6 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Namespace 'distributedDeviceManager' has no exported member 'DeviceInfo'. At File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/manager/DistributedManager.ets:136:82
+
+
+7 ERROR: 10505001 ArkTS Compiler Error
+Error Message: No overload matches this call.
+  The last overload gave the following error.
+    Argument of type '"deviceDiscover"' is not assignable to parameter of type '"serviceDie"'. At File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/manager/DistributedManager.ets:151:29
+
+
+8 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Namespace 'distributedDeviceManager' has no exported member 'DiscoverDeviceInfo'. At File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/manager/DistributedManager.ets:151:79
+
+
+9 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Namespace 'distributedDeviceManager' has no exported member 'SubscribeInfo'. At File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/manager/DistributedManager.ets:154:51
+
+
+10 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Property 'DiscoverMode' does not exist on type 'typeof distributedDeviceManager'. At File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/manager/DistributedManager.ets:156:40
+
+
+11 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Property 'startDiscoverDevices' does not exist on type 'DeviceManager'. Did you mean 'startDiscovering'? At File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/manager/DistributedManager.ets:158:26
+
+
+12 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Property 'stopDiscoverDevices' does not exist on type 'DeviceManager'. At File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/manager/DistributedManager.ets:168:28
+
+
+13 ERROR: 10505001 ArkTS Compiler Error
+Error Message: Property 'getAllParamByName' does not exist on type 'NavPathStack'. Did you mean 'getParamByName'? At File: /Users/raychen/Develop/HarmonyOS/NovaTask/entry/src/main/ets/pages/TaskDetailPage.ets:20:32
+
+
+COMPILE RESULT:FAIL {ERROR:14 WARN:6}
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --debug option to get more log output.
+
+> hvigor ERROR: BUILD FAILED in 940 ms 
+
+
+Process finished with exit code 255
+

@@ -2,15 +2,27 @@
   "string": [
     {
       "name": "module_desc",
-      "value": "module description"
+      "value": "NovaTask - AI-powered task management"
     },
     {
       "name": "EntryAbility_desc",
-      "value": "description"
+      "value": "NovaTask entry ability"
     },
     {
       "name": "EntryAbility_label",
-      "value": "label"
+      "value": "NovaTask"
+    },
+    {
+      "name": "permission_internet_reason",
+      "value": "Used by AI Agent to call cloud services for task decomposition"
+    },
+    {
+      "name": "permission_network_info_reason",
+      "value": "Used to detect network connection status"
+    },
+    {
+      "name": "permission_distributed_reason",
+      "value": "Used for multi-device task synchronization"
     }
   ]
 }
