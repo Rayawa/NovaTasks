@@ -61,7 +61,7 @@ export struct TaskDetailPage {
     }
     .width('100%')
     .height('100%')
-    .backgroundColor($r('app.color.page_background'))
+    .backgroundColor('#F5F5F5')
   }
 
   @Builder
@@ -69,19 +69,20 @@ export struct TaskDetailPage {
     Row() {
       Text('\u2190')
         .fontSize(24)
-        .fontColor($r('app.color.icon_normal'))
+        .fontColor('#333333')
         .onClick(() => {
           this.navStack.pop()
         })
       Text('Task Detail')
         .fontSize(20)
         .fontWeight(FontWeight.Bold)
-        .fontColor($r('app.color.title_text'))
+        .fontColor('#1A1A1A')
         .margin({ left: 12 })
     }
     .width('100%')
     .height(56)
     .padding({ left: 16, right: 16 })
+    .backgroundBlurStyle(BlurStyle.COMPONENT_THIN)
     .backgroundColor(Color.White)
   }
 
@@ -91,11 +92,11 @@ export struct TaskDetailPage {
       Row() {
         Text('Title:')
           .fontSize(14)
-          .fontColor($r('app.color.text_secondary'))
+          .fontColor('#666666')
           .width(80)
         TextInput({ text: this.taskTitle })
           .fontSize(16)
-          .fontColor($r('app.color.title_text'))
+          .fontColor('#1A1A1A')
           .layoutWeight(1)
           .onChange((value: string) => {
             this.taskTitle = value
@@ -108,11 +109,11 @@ export struct TaskDetailPage {
       Row() {
         Text('Description:')
           .fontSize(14)
-          .fontColor($r('app.color.text_secondary'))
+          .fontColor('#666666')
           .width(80)
         TextInput({ text: this.taskDescription })
           .fontSize(14)
-          .fontColor($r('app.color.title_text'))
+          .fontColor('#1A1A1A')
           .layoutWeight(1)
           .onChange((value: string) => {
             this.taskDescription = value
@@ -125,12 +126,12 @@ export struct TaskDetailPage {
       Row() {
         Text('Priority:')
           .fontSize(14)
-          .fontColor($r('app.color.text_secondary'))
+          .fontColor('#666666')
           .width(80)
         Row() {
           Button('Low')
             .fontSize(12)
-            .fontColor(this.taskPriority === TaskPriority.LOW ? Color.White : $r('app.color.text_secondary'))
+            .fontColor(this.taskPriority === TaskPriority.LOW ? Color.White : '#666666')
             .backgroundColor(this.taskPriority === TaskPriority.LOW ? $r('app.color.priority_low') : Color.Transparent)
             .onClick(() => {
               this.taskPriority = TaskPriority.LOW
@@ -138,7 +139,7 @@ export struct TaskDetailPage {
             })
           Button('Med')
             .fontSize(12)
-            .fontColor(this.taskPriority === TaskPriority.MEDIUM ? Color.White : $r('app.color.text_secondary'))
+            .fontColor(this.taskPriority === TaskPriority.MEDIUM ? Color.White : '#666666')
             .backgroundColor(this.taskPriority === TaskPriority.MEDIUM ? $r('app.color.priority_medium') : Color.Transparent)
             .onClick(() => {
               this.taskPriority = TaskPriority.MEDIUM
@@ -146,7 +147,7 @@ export struct TaskDetailPage {
             })
           Button('High')
             .fontSize(12)
-            .fontColor(this.taskPriority === TaskPriority.HIGH ? Color.White : $r('app.color.text_secondary'))
+            .fontColor(this.taskPriority === TaskPriority.HIGH ? Color.White : '#666666')
             .backgroundColor(this.taskPriority === TaskPriority.HIGH ? $r('app.color.priority_high') : Color.Transparent)
             .onClick(() => {
               this.taskPriority = TaskPriority.HIGH
@@ -154,8 +155,8 @@ export struct TaskDetailPage {
             })
           Button('Urgent')
             .fontSize(12)
-            .fontColor(this.taskPriority === TaskPriority.URGENT ? Color.White : $r('app.color.text_secondary'))
-            .backgroundColor(this.taskPriority === TaskPriority.URGENT ? $r('app.color.priority_urgent') : Color.Transparent)
+            .fontColor(this.taskPriority === TaskPriority.URGENT ? Color.White : '#666666')
+            .backgroundColor(this.taskPriority === TaskPriority.URGENT ? '#F44336' : Color.Transparent)
             .onClick(() => {
               this.taskPriority = TaskPriority.URGENT
               this.viewModel.updateTaskPriority(TaskPriority.URGENT)
@@ -166,7 +167,7 @@ export struct TaskDetailPage {
       Row() {
         Text('Status:')
           .fontSize(14)
-          .fontColor($r('app.color.text_secondary'))
+          .fontColor('#666666')
           .width(80)
         Text(TaskData.statusToString(this.taskStatus))
           .fontSize(14)
@@ -176,8 +177,15 @@ export struct TaskDetailPage {
     }
     .width('100%')
     .padding(16)
+    .backgroundBlurStyle(BlurStyle.COMPONENT_REGULAR)
     .backgroundColor(Color.White)
     .borderRadius(12)
+    .shadow({
+      radius: 8,
+      color: 'rgba(0,0,0,0.1)',
+      offsetX: 0,
+      offsetY: 2
+    })
   }
 
   @Builder
@@ -187,12 +195,12 @@ export struct TaskDetailPage {
         Text('Agent Steps')
           .fontSize(16)
           .fontWeight(FontWeight.Bold)
-          .fontColor($r('app.color.title_text'))
+          .fontColor('#1A1A1A')
         Blank()
         if (this.isAgentRunning) {
           LoadingProgress()
-            .width(20)
-            .height(20)
+            .width(16)
+            .height(16)
             .color($r('app.color.agent_primary'))
         }
       }
@@ -203,7 +211,7 @@ export struct TaskDetailPage {
             .fontSize(12)
             .fontColor(Color.White)
             .backgroundColor(this.stepStatusColor(step.status))
-            .borderRadius(10)
+            .borderRadius(8)
             .width(20)
             .height(20)
             .textAlign(TextAlign.Center)
@@ -211,7 +219,7 @@ export struct TaskDetailPage {
 
           Text(step.action)
             .fontSize(14)
-            .fontColor($r('app.color.title_text'))
+            .fontColor('#1A1A1A')
             .layoutWeight(1)
 
           Text(AgentStep.statusToString(step.status))
@@ -220,6 +228,7 @@ export struct TaskDetailPage {
         }
         .width('100%')
         .padding(8)
+        .backgroundBlurStyle(BlurStyle.COMPONENT_THIN)
         .backgroundColor(Color.White)
         .borderRadius(8)
       }, (step: AgentStep) => step.id)
@@ -239,8 +248,15 @@ export struct TaskDetailPage {
     }
     .width('100%')
     .padding(16)
-    .backgroundColor($r('app.color.agent_panel_bg'))
+    .backgroundBlurStyle(BlurStyle.COMPONENT_THICK)
+    .backgroundColor('#F3E5F5')
     .borderRadius(12)
+    .shadow({
+      radius: 8,
+      color: 'rgba(0,0,0,0.1)',
+      offsetX: 0,
+      offsetY: 2
+    })
   }
 
   @Builder
@@ -249,7 +265,7 @@ export struct TaskDetailPage {
       Text('Sub-Tasks')
         .fontSize(16)
         .fontWeight(FontWeight.Bold)
-        .fontColor($r('app.color.title_text'))
+        .fontColor('#1A1A1A')
 
       ForEach(this.subTasks, (subTask: TaskData) => {
         Row() {
@@ -259,23 +275,35 @@ export struct TaskDetailPage {
             .height(20)
           Text(subTask.title)
             .fontSize(14)
-            .fontColor(subTask.status === TaskStatus.COMPLETED ? $r('app.color.text_hint') : $r('app.color.title_text'))
+            .fontColor(subTask.status === TaskStatus.COMPLETED ? '#999999' : '#1A1A1A')
             .layoutWeight(1)
-            .decoration({ type: subTask.status === TaskStatus.COMPLETED ? TextDecorationType.LineThrough : TextDecorationType.None })
+            .decoration({ 
+              type: subTask.status === TaskStatus.COMPLETED 
+                ? TextDecorationType.LineThrough 
+                : TextDecorationType.None 
+            })
           Text(TaskData.statusToString(subTask.status))
             .fontSize(12)
             .fontColor(this.statusColor(subTask.status))
         }
         .width('100%')
         .padding(8)
+        .backgroundBlurStyle(BlurStyle.COMPONENT_THIN)
         .backgroundColor(Color.White)
         .borderRadius(8)
       }, (subTask: TaskData) => subTask.id)
     }
     .width('100%')
     .padding(16)
+    .backgroundBlurStyle(BlurStyle.COMPONENT_REGULAR)
     .backgroundColor(Color.White)
     .borderRadius(12)
+    .shadow({
+      radius: 8,
+      color: 'rgba(0,0,0,0.1)',
+      offsetX: 0,
+      offsetY: 2
+    })
   }
 
   @Builder
@@ -285,7 +313,7 @@ export struct TaskDetailPage {
         Button('Start Task')
           .fontSize(14)
           .fontColor(Color.White)
-          .backgroundColor($r('app.color.brand_primary'))
+          .backgroundColor('#4F6EF7')
           .borderRadius(8)
           .width('100%')
           .onClick(() => {
@@ -298,7 +326,7 @@ export struct TaskDetailPage {
         Button('Complete Task')
           .fontSize(14)
           .fontColor(Color.White)
-          .backgroundColor($r('app.color.status_completed'))
+          .backgroundColor('#4CAF50')
           .borderRadius(8)
           .width('100%')
           .onClick(() => {
@@ -309,8 +337,8 @@ export struct TaskDetailPage {
 
       Button('Share to Distributed Devices')
         .fontSize(14)
-        .fontColor(this.isDistributedShared ? $r('app.color.text_hint') : Color.White)
-        .backgroundColor(this.isDistributedShared ? $r('app.color.divider') : $r('app.color.distributed_primary'))
+        .fontColor(this.isDistributedShared ? '#999999' : Color.White)
+        .backgroundColor(this.isDistributedShared ? '#EEEEEE' : $r('app.color.distributed_primary'))
         .borderRadius(8)
         .width('100%')
         .enabled(!this.isDistributedShared)
@@ -322,7 +350,7 @@ export struct TaskDetailPage {
       Button('Delete Task')
         .fontSize(14)
         .fontColor(Color.White)
-        .backgroundColor($r('app.color.status_failed'))
+        .backgroundColor('#F44336')
         .borderRadius(8)
         .width('100%')
         .onClick(() => {
@@ -341,11 +369,11 @@ export struct TaskDetailPage {
       case TaskStatus.IN_PROGRESS:
         return $r('app.color.status_in_progress')
       case TaskStatus.COMPLETED:
-        return $r('app.color.status_completed')
+        return '#4CAF50'
       case TaskStatus.CANCELLED:
         return $r('app.color.status_cancelled')
       case TaskStatus.FAILED:
-        return $r('app.color.status_failed')
+        return '#F44336'
       default:
         return $r('app.color.status_pending')
     }
@@ -358,9 +386,9 @@ export struct TaskDetailPage {
       case StepStatus.RUNNING:
         return $r('app.color.status_in_progress')
       case StepStatus.SUCCESS:
-        return $r('app.color.status_completed')
+        return '#4CAF50'
       case StepStatus.FAILED:
-        return $r('app.color.status_failed')
+        return '#F44336'
       case StepStatus.SKIPPED:
         return $r('app.color.status_cancelled')
       default:

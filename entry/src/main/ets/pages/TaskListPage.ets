@@ -47,7 +47,7 @@ export struct TaskListPage {
     }
     .width('100%')
     .height('100%')
-    .backgroundColor($r('app.color.page_background'))
+    .backgroundColor('#F5F5F5')
   }
 
   @Builder
@@ -56,11 +56,11 @@ export struct TaskListPage {
       Text(APP_NAME)
         .fontSize(24)
         .fontWeight(FontWeight.Bold)
-        .fontColor($r('app.color.title_text'))
+        .fontColor('#1A1A1A')
       Blank()
       Text('\u2699')
         .fontSize(24)
-        .fontColor($r('app.color.icon_normal'))
+        .fontColor('#333333')
         .onClick(() => {
           this.navStack.pushPath({ name: 'Settings' })
         })
@@ -94,13 +94,13 @@ export struct TaskListPage {
   loadingView() {
     Column() {
       LoadingProgress()
-        .width(48)
-        .height(48)
-        .color($r('app.color.brand_primary'))
+        .width(32)
+        .height(32)
+        .color('#4F6EF7')
       Text('Loading...')
         .fontSize(14)
-        .fontColor($r('app.color.text_secondary'))
-        .margin({ top: 12 })
+        .fontColor('#666666')
+        .margin({ top: 8 })
     }
     .width('100%')
     .layoutWeight(1)
@@ -112,10 +112,10 @@ export struct TaskListPage {
     Column() {
       Text('No tasks yet')
         .fontSize(18)
-        .fontColor($r('app.color.text_secondary'))
+        .fontColor('#666666')
       Text('Tap + to create a task or use Agent to decompose a goal')
         .fontSize(14)
-        .fontColor($r('app.color.text_hint'))
+        .fontColor('#999999')
         .margin({ top: 8 })
     }
     .width('100%')
@@ -135,7 +135,7 @@ export struct TaskListPage {
     .width('100%')
     .layoutWeight(1)
     .padding({ left: 16, right: 16 })
-    .divider({ strokeWidth: 1, color: $r('app.color.divider') })
+    .divider({ strokeWidth: 1, color: '#EEEEEE' })
   }
 
   @Builder
@@ -146,13 +146,17 @@ export struct TaskListPage {
           Text(task.title)
             .fontSize(16)
             .fontWeight(FontWeight.Medium)
-            .fontColor(task.status === TaskStatus.COMPLETED ? $r('app.color.text_hint') : $r('app.color.title_text'))
-            .decoration({ type: task.status === TaskStatus.COMPLETED ? TextDecorationType.LineThrough : TextDecorationType.None })
+            .fontColor(task.status === TaskStatus.COMPLETED ? '#999999' : '#1A1A1A')
+            .decoration({ 
+              type: task.status === TaskStatus.COMPLETED 
+                ? TextDecorationType.LineThrough 
+                : TextDecorationType.None 
+            })
           if (task.isAgentDriven) {
             Text('Agent')
               .fontSize(10)
               .fontColor(Color.White)
-              .backgroundColor($r('app.color.brand_primary'))
+              .backgroundColor('#4F6EF7')
               .borderRadius(4)
               .padding({ left: 4, right: 4, top: 1, bottom: 1 })
               .margin({ left: 8 })
@@ -160,7 +164,7 @@ export struct TaskListPage {
         }
         Text(TaskData.categoryToString(task.category) + ' | ' + TaskData.priorityToString(task.priority))
           .fontSize(12)
-          .fontColor($r('app.color.text_secondary'))
+          .fontColor('#666666')
           .margin({ top: 4 })
       }
       .layoutWeight(1)
@@ -180,8 +184,15 @@ export struct TaskListPage {
     }
     .width('100%')
     .padding(12)
+    .backgroundBlurStyle(BlurStyle.COMPONENT_REGULAR)
     .backgroundColor(Color.White)
     .borderRadius(12)
+    .shadow({
+      radius: 8,
+      color: 'rgba(0,0,0,0.1)',
+      offsetX: 0,
+      offsetY: 2
+    })
     .onClick(() => {
       this.navStack.pushPath({ name: 'TaskDetail', param: task.id })
     })
@@ -193,7 +204,7 @@ export struct TaskListPage {
       .fontSize(10)
       .fontColor(Color.White)
       .backgroundColor(this.priorityColor(priority))
-      .borderRadius(10)
+      .borderRadius(8)
       .padding({ left: 6, right: 6, top: 2, bottom: 2 })
       .margin({ right: 8 })
   }
@@ -201,7 +212,7 @@ export struct TaskListPage {
   private priorityColor(priority: TaskPriority): ResourceColor {
     switch (priority) {
       case TaskPriority.URGENT:
-        return $r('app.color.priority_urgent')
+        return '#F44336'
       case TaskPriority.HIGH:
         return $r('app.color.priority_high')
       case TaskPriority.MEDIUM:
@@ -223,8 +234,15 @@ export struct TaskListPage {
       }
       .width(56)
       .height(56)
-      .backgroundColor($r('app.color.brand_primary'))
+      .backgroundColor('#4F6EF7')
       .borderRadius(28)
+      .backgroundBlurStyle(BlurStyle.COMPONENT_THICK)
+      .shadow({
+        radius: 16,
+        color: 'rgba(0,0,0,0.15)',
+        offsetX: 0,
+        offsetY: 4
+      })
       .onClick(() => {
         this.showCreateDialog = true
       })
@@ -239,6 +257,13 @@ export struct TaskListPage {
       .height(56)
       .backgroundColor($r('app.color.agent_primary'))
       .borderRadius(28)
+      .backgroundBlurStyle(BlurStyle.COMPONENT_THICK)
+      .shadow({
+        radius: 16,
+        color: 'rgba(0,0,0,0.15)',
+        offsetX: 0,
+        offsetY: 4
+      })
       .margin({ left: 16 })
       .onClick(() => {
         this.showAgentDialog = true
@@ -256,16 +281,16 @@ export struct TaskListPage {
         LoadingProgress()
           .width(16)
           .height(16)
-          .color($r('app.color.brand_primary'))
+          .color('#4F6EF7')
         Text(this.syncStatusText)
           .fontSize(12)
-          .fontColor($r('app.color.text_secondary'))
+          .fontColor('#666666')
           .margin({ left: 8 })
       }
       .width('100%')
-      .height(32)
+      .height(40)
       .padding({ left: 16 })
-      .backgroundColor($r('app.color.sync_bar_bg'))
+      .backgroundColor('#E8EAF6')
     }
   }
 }
